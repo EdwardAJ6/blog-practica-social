@@ -78,6 +78,8 @@ body:has(.entrada:target) #inicio{display:none}
 .objetivo{font:500 italic 1.25rem/1.5 var(--serif); padding:1.5rem; border-radius:.75rem; background:var(--soft); margin:0 0 1rem}
 .especificos{counter-reset:o; list-style:none; padding:0}
 .especificos li{counter-increment:o; position:relative; padding-left:3.5rem}
+.especificos small{display:block; margin-top:.25rem; color:var(--muted); font-size:.8125rem}
+.refs li{overflow-wrap:anywhere}
 .especificos li::before{content:counter(o,decimal-leading-zero); position:absolute; left:1rem; font:500 italic 1.25rem/1.4 var(--serif); color:var(--accent-text)}
 
 .fotos{display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(12rem,1fr)); margin:1.5rem 0}
@@ -106,10 +108,9 @@ body:has(.entrada:target) #inicio{display:none}
 .fotos img,.foto-ph{width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:.75rem; display:grid; place-items:center;
   border:2px dashed var(--border); color:var(--muted); font-size:.875rem}
 figcaption{font-size:.8125rem; color:var(--muted); margin-top:.5rem}
-.mapa{width:100%; aspect-ratio:16/9; border:1px solid var(--border); border-radius:.75rem}
 
 .refs{list-style:none; padding:0}
-.refs li{padding-left:3rem; text-indent:-2rem} /* sangría francesa APA */
+.refs li{padding-left:2rem; text-indent:-2rem} /* sangría francesa APA */
 
 .pager{display:flex; justify-content:space-between; gap:1rem; margin-top:4rem; padding-top:2rem; border-top:1px solid var(--border)}
 .pager a{display:flex; flex-direction:column; min-height:44px; text-decoration:none; font-weight:600}
@@ -170,8 +171,8 @@ footer{border-top:1px solid var(--border); padding:2rem 0; color:var(--muted); f
         <p>Próximamente.</p>
         <span class="go">Ver entrada <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
       </a></li>
-      <li><!-- ✏️ Pon aquí el enlace real de su carpeta de Drive -->
-        <a class="card drive" href="https://drive.google.com/" target="_blank" rel="noopener">
+      <li>
+        <a class="card drive" href="https://drive.google.com/drive/folders/1zkJpDcLQ3hsaQ0pCDPdwEFr3JrW-vBnE?usp=sharing" target="_blank" rel="noopener">
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
         <h2>Carpeta en Drive</h2>
         <p>Evidencias, fotografías y documentos del proyecto.</p>
@@ -199,9 +200,9 @@ footer{border-top:1px solid var(--border); padding:2rem 0; color:var(--muted); f
           </div>
         </li>
         <li class="persona">
-          <img src="fotos/eilyn.jpg" alt="Foto de Eilyn Rodríguez" loading="lazy">
+          <img src="fotos/eilyn.jpg" alt="Foto de Eilyn Mariana Rodríguez Gelvez" loading="lazy">
           <div>
-            <h3>Eilyn Rodríguez</h3>
+            <h3>Eilyn Mariana Rodríguez Gelvez</h3>
             <p class="dato">Ingeniería Industrial · ID 992028</p>
             <p>Vivo en Cúcuta, Norte de Santander. Soy una persona comprometida con mi formación personal y profesional, caracterizada por la responsabilidad, la dedicación y el deseo constante de aprender.</p>
           </div>
@@ -216,9 +217,9 @@ footer{border-top:1px solid var(--border); padding:2rem 0; color:var(--muted); f
           </div>
         </li>
         <li class="persona">
-          <img src="fotos/edwar.jpg" alt="Foto de Edwar Ivan Alba Jerez" loading="lazy">
+          <img src="fotos/edwar.jpg" alt="Foto de Edwar Iván Alba Jerez" loading="lazy">
           <div>
-            <h3>Edwar Ivan Alba Jerez</h3>
+            <h3>Edwar Iván Alba Jerez</h3>
             <p class="dato">Ingeniería de Software · ID 1065135</p>
             <p>Soy estudiante de Ingeniería de Software. Me apasiona la tecnología y creo que puede acercar a las personas; por eso me motiva compartir lo que sé con mi comunidad y aprender de cada encuentro.</p>
           </div>
@@ -231,14 +232,7 @@ footer{border-top:1px solid var(--border); padding:2rem 0; color:var(--muted); f
         <li class="persona"><div class="avatar" aria-hidden="true"></div><div><h3>Peregrino Pradilla Rojas</h3><p class="dato">La Serena · Bogotá</p><p class="ph">Breve presentación.</p></div></li>
         <li class="persona"><div class="avatar" aria-hidden="true"></div><div><h3>Deybi Rodríguez Gelvez</h3><p class="dato">Cúcuta · Norte de Santander</p><p class="ph">Breve presentación.</p></div></li>
         <li class="persona"><div class="avatar" aria-hidden="true"></div><div><h3>Henry Power Rodríguez</h3><p class="dato">Cúcuta · Norte de Santander</p><p class="ph">Breve presentación.</p></div></li>
-        <li class="persona"><div class="avatar" aria-hidden="true"></div><div><h3>María Piedad Gelvez</h3><p class="dato">Cúcuta · Norte de Santander</p><p class="ph">Breve presentación.</p></div></li>
-        <li class="persona"><div class="avatar" aria-hidden="true"></div><div><h3>Participante 5</h3><p class="dato">Barrio · Ciudad</p><p class="ph">Breve presentación.</p></div></li>
-        <li class="persona"><div class="avatar" aria-hidden="true"></div><div><h3>Participante 6</h3><p class="dato">Barrio · Ciudad</p><p class="ph">Breve presentación.</p></div></li>
-        <li class="persona"><div class="avatar" aria-hidden="true"></div><div><h3>Participante 7</h3><p class="dato">Barrio · Ciudad</p><p class="ph">Breve presentación.</p></div></li>
-        <li class="persona"><div class="avatar" aria-hidden="true"></div><div><h3>Participante 8</h3><p class="dato">Barrio · Ciudad</p><p class="ph">Breve presentación.</p></div></li>
-        <li class="persona"><div class="avatar" aria-hidden="true"></div><div><h3>Participante 9</h3><p class="dato">Barrio · Ciudad</p><p class="ph">Breve presentación.</p></div></li>
-        <li class="persona"><div class="avatar" aria-hidden="true"></div><div><h3>Participante 10</h3><p class="dato">Barrio · Ciudad</p><p class="ph">Breve presentación.</p></div></li>
-      </ul>
+        <li class="persona"><div class="avatar" aria-hidden="true"></div><div><h3>María Piedad Gelvez</h3><p class="dato">Cúcuta · Norte de Santander</p><p class="ph">Breve presentación.</p></div></li>      </ul>
 
       <h2>¿Dónde se encuentra ubicada esa comunidad o grupo social?</h2>
       <p>La comunidad está repartida en cuatro lugares: tres barrios de Bogotá y la ciudad de Cúcuta.</p>
@@ -276,43 +270,68 @@ footer{border-top:1px solid var(--border); padding:2rem 0; color:var(--muted); f
     <a class="back" href="#">← Volver al inicio</a>
     <header>
       <p class="eyebrow">Entrada 02 · El proyecto</p>
-      <h1>Título breve y llamativo del proyecto</h1> <!-- ✏️ Relacionado con el tema y el contexto social del PSF -->
+      <h1>Billeteras digitales sin miedo</h1>
+      <p class="lead">Aprender a pagar, transferir y proteger nuestro dinero desde el celular, en familia y entre vecinos.</p>
     </header>
     <div class="prose">
       <h2>Planteamiento de la problemática y contexto</h2>
       <h3>La problemática</h3>
-      <p class="ph">Presenten la problemática que eligieron en el plan de trabajo y hagan una breve descripción.</p>
+      <p>Pagar, transferir o recibir dinero desde el celular ya es parte de la vida diaria, pero no para todos es sencillo. Registrarse en una billetera digital, crear una contraseña segura, confirmar el destinatario de una transferencia, escanear un código QR o recuperar una cuenta pueden resultar tareas complejas, sobre todo para las personas mayores que tienen poca experiencia con teléfonos inteligentes y aplicaciones financieras.</p>
+      <p>Esto genera dependencia de familiares o terceros para hacer operaciones cotidianas, desconfianza hacia la tecnología y mayor exposición a fraudes. No se trata de errores individuales: es parte de la <strong>brecha digital</strong>. En Colombia, las habilidades digitales son la dimensión que más pesa en esa brecha, con el 34,9&nbsp;% del índice nacional en 2022 (Ministerio de Tecnologías de la Información y las Comunicaciones [MinTIC], 2023). A nivel mundial ocurre algo similar: tener un celular o acceso a internet no basta si no se cuenta con las competencias para usarlos (Iberdrola, s.&nbsp;f.).</p>
+
       <h3>El territorio</h3>
-      <p class="ph">Contextualicen el territorio o la comunidad donde desarrollarán la práctica en responsabilidad social.</p>
+      <p>Trabajamos con nuestras familias y vecinos en dos ciudades. En <strong>Cúcuta (Norte de Santander)</strong> están la mayoría de los participantes y nuestro interlocutor, Deybi Rodríguez Gelvez. En <strong>Bogotá</strong> participan vecinos de los barrios Mandalay y Ayacucho (localidad de Kennedy) y La Serena (localidad de Engativá).</p>
+      <p>Bogotá es el territorio con menor brecha digital del país (0,254 en 2022), lo que muestra que, incluso donde hay más conectividad, persisten las dificultades de uso (MinTIC, 2023). En Norte de Santander, la brecha en la dimensión de motivación es de las más bajas del país (0,048 en 2024) (MinTIC, 2025): las personas sí quieren usar la tecnología; lo que les falta es acompañamiento para aprender a hacerlo con seguridad.</p>
 
       <div class="fotos">
         <!-- ✏️ Reemplacen cada <div class="foto-ph"> por: <img src="fotos/foto1.jpg" alt="Descripción de la foto"> -->
-        <figure><div class="foto-ph">Foto 1</div><figcaption>Pie de foto del territorio.</figcaption></figure>
-        <figure><div class="foto-ph">Foto 2</div><figcaption>Pie de foto de la comunidad.</figcaption></figure>
-        <figure><div class="foto-ph">Foto 3</div><figcaption>Pie de foto.</figcaption></figure>
+        <figure><div class="foto-ph">Foto 1</div><figcaption>Participantes en Cúcuta.</figcaption></figure>
+        <figure><div class="foto-ph">Foto 2</div><figcaption>Participantes en Bogotá.</figcaption></figure>
+        <figure><div class="foto-ph">Foto 3</div><figcaption>Sesión virtual por Google Meet.</figcaption></figure>
       </div>
 
       <h3>Geolocalización</h3>
-      <!-- ✏️ Cambien las coordenadas: en openstreetmap.org → Compartir → HTML, copien el src del iframe -->
-      <iframe class="mapa" title="Mapa de la ubicación de la comunidad" loading="lazy"
-        src="https://www.openstreetmap.org/export/embed.html?bbox=-74.12%2C4.58%2C-74.04%2C4.68&amp;layer=mapnik&amp;marker=4.63%2C-74.08"></iframe>
+      <ul class="cards wide">
+        <li class="lugar">
+          <iframe title="Mapa de Cúcuta, Norte de Santander" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-72.5580%2C7.8571%2C-72.4580%2C7.9371&amp;layer=mapnik&amp;marker=7.8971%2C-72.5080"></iframe>
+          <div><strong>Cúcuta</strong><span>Norte de Santander</span><a href="https://www.openstreetmap.org/?mlat=7.8971&amp;mlon=-72.5080#map=13/7.8971/-72.5080" target="_blank" rel="noopener">Ver mapa grande ↗</a></div>
+        </li>
+        <li class="lugar">
+          <iframe title="Mapa del barrio Mandalay, Kennedy, Bogotá" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-74.1520%2C4.6224%2C-74.1360%2C4.6344&amp;layer=mapnik&amp;marker=4.6284%2C-74.1440"></iframe>
+          <div><strong>Mandalay</strong><span>Kennedy · Bogotá</span><a href="https://www.openstreetmap.org/?mlat=4.6284&amp;mlon=-74.1440#map=16/4.6284/-74.1440" target="_blank" rel="noopener">Ver mapa grande ↗</a></div>
+        </li>
+        <li class="lugar">
+          <iframe title="Mapa del barrio Ayacucho, Kennedy, Bogotá" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-74.1606%2C4.6244%2C-74.1446%2C4.6364&amp;layer=mapnik&amp;marker=4.6304%2C-74.1526"></iframe>
+          <div><strong>Ayacucho</strong><span>Kennedy · Bogotá</span><a href="https://www.openstreetmap.org/?mlat=4.6304&amp;mlon=-74.1526#map=16/4.6304/-74.1526" target="_blank" rel="noopener">Ver mapa grande ↗</a></div>
+        </li>
+        <li class="lugar">
+          <iframe title="Mapa del barrio La Serena, Engativá, Bogotá" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-74.1014%2C4.7008%2C-74.0854%2C4.7128&amp;layer=mapnik&amp;marker=4.7068%2C-74.0934"></iframe>
+          <div><strong>La Serena</strong><span>Engativá · Bogotá</span><a href="https://www.openstreetmap.org/?mlat=4.7068&amp;mlon=-74.0934#map=16/4.7068/-74.0934" target="_blank" rel="noopener">Ver mapa grande ↗</a></div>
+        </li>
+      </ul>
 
       <h2>Objetivos</h2>
       <h3>Objetivo general</h3>
-      <p class="objetivo">Relacionado con el tema y la comunidad o territorio seleccionado.</p>
+      <p class="objetivo">Fortalecer las habilidades y conocimientos digitales de la población para facilitar la comprensión y el uso autónomo, seguro y adecuado de las billeteras digitales, promoviendo la inclusión financiera y reduciendo las dificultades relacionadas con el manejo de aplicaciones, transferencias, contraseñas, códigos QR y otras herramientas tecnológicas.</p>
       <h3>Objetivos específicos</h3>
       <ol class="especificos">
-        <li class="ph">Primera etapa del proyecto.</li>
-        <li class="ph">Segunda etapa del proyecto.</li>
-        <li class="ph">Tercera etapa del proyecto.</li>
+        <li>Explicar qué es una billetera digital y para qué sirve, mediante una sesión teórica con videos y diapositivas.<small>Sesión 1 · Edwar y Pedro</small></li>
+        <li>Acompañar a los participantes en la descarga, el registro y la configuración de una billetera digital en su celular.<small>Sesión 2 · Wilson y Eilyn</small></li>
+        <li>Practicar el uso de la billetera para enviar y recibir dinero, hacer pagos y usar códigos QR.<small>Sesión 3 · Wilson y Eilyn</small></li>
+        <li>Enseñar medidas de seguridad para proteger la cuenta y prevenir fraudes.<small>Sesión 4 · Edwar y Pedro</small></li>
       </ol>
 
       <h2>Justificación</h2>
-      <p class="ph">Con argumentos claros y contundentes: la problemática abordada y la justificación del proyecto desde su carácter <strong>académico</strong>, <strong>científico</strong> y <strong>social</strong>, y los aportes que puede generar en la comunidad.</p>
+      <p>Las billeteras digitales se volvieron una forma común de pagar y recibir dinero, pero no todas las personas tienen las habilidades para usarlas con autonomía y seguridad. Este proyecto se justifica desde tres dimensiones:</p>
+      <p><strong>Académica.</strong> Nos permite aplicar en un contexto real lo que aprendemos en nuestros programas (Ingeniería de Software, Ingeniería Industrial y Administración de Empresas) y fortalecer nuestra formación en responsabilidad social, dentro de la línea <em>Ciudadanías, comunicación, ciencias y tecnologías</em>.</p>
+      <p><strong>Científica.</strong> La propuesta parte de datos verificables. Según el Índice de Brecha Digital, las habilidades digitales explicaron el 34,9&nbsp;% de la brecha del país en 2022 (MinTIC, 2023), y en 2024 las habilidades digitales y el acceso material, en conjunto, explicaron el 65,7&nbsp;% del índice (MinTIC, 2025). A nivel global, la llamada <em>brecha de uso</em> muestra que el acceso a internet no garantiza saber aprovecharlo (Iberdrola, s.&nbsp;f.).</p>
+      <p><strong>Social.</strong> Aprender a usar billeteras digitales de forma segura reduce la dependencia de terceros, aumenta la autonomía y la confianza de las personas, las protege frente a fraudes y promueve su inclusión financiera. Al terminar las sesiones esperamos que cada participante pueda registrarse, enviar y recibir dinero, pagar con QR y proteger su cuenta sin ayuda.</p>
 
       <h2>Referencias</h2>
       <ul class="refs">
-        <li class="ph">Apellido, A. A. (Año). <em>Título del trabajo</em>. Editorial. https://doi.org/xxxx</li>
+        <li>Iberdrola. (s.&nbsp;f.). <em>Brecha digital</em>. https://www.iberdrola.com/compromiso-social/que-es-brecha-digital</li>
+        <li>Ministerio de Tecnologías de la Información y las Comunicaciones. (2023). <em>Índice de Brecha Digital: Resultados 2022</em>. https://ontic.mintic.gov.co/857/articles-383343_recurso_1.pdf</li>
+        <li>Ministerio de Tecnologías de la Información y las Comunicaciones. (2025). <em>Índice de Brecha Digital: Resultados 2024</em>. https://ontic.mintic.gov.co/857/articles-416812_recurso_1.pdf</li>
       </ul>
     </div>
     <nav class="pager" aria-label="Entradas">
