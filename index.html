@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tejiendo Redes · Blog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,500;0,700;1,500&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FAFAFA; --fg:#09090B; --card:#FFFFFF; --muted:#52525B; --border:#E4E4E7;
+  --accent:#EC4899; --accent-text:#BE185D; --soft:#FDF2F8;
+  --serif:"Libre Bodoni",Georgia,serif; --sans:"Public Sans",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#0B0B0D; --fg:#F4F4F5; --card:#16161A; --muted:#A1A1AA; --border:#2A2A30; --accent-text:#F472B6; --soft:#2A1220}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0; background:var(--bg); color:var(--fg); font:400 1.0625rem/1.65 var(--sans)}
+a{color:inherit}
+a:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:4px}
+.wrap{max-width:72rem; margin:0 auto; padding:0 1.25rem}
+
+/* Cabecera */
+.site{border-bottom:1px solid var(--border)}
+.site .wrap{display:flex; justify-content:space-between; align-items:center; gap:1rem; min-height:4rem; flex-wrap:wrap}
+.brand{font:700 1.25rem var(--serif); text-decoration:none}
+.brand span{color:var(--accent)}
+.site small{color:var(--muted); font-size:.875rem}
+
+/* Tipografía */
+.eyebrow{margin:0 0 .75rem; color:var(--accent-text); font-weight:600; font-size:.8125rem; letter-spacing:.12em; text-transform:uppercase}
+h1,h2,h3{font-family:var(--serif); font-weight:700; line-height:1.15; text-wrap:balance}
+h1{font-size:clamp(2.5rem,7vw,4.75rem); margin:0 0 1.25rem; letter-spacing:-.02em}
+.lead{font-size:1.1875rem; color:var(--muted); max-width:40rem; margin:0}
+
+/* Inicio */
+#inicio{padding:clamp(3rem,8vw,6rem) 0 5rem}
+.grid{list-style:none; padding:0; margin:3.5rem 0 0; display:grid; gap:1.25rem; grid-template-columns:repeat(auto-fill,minmax(17rem,1fr))}
+@media (min-width:64rem){ /* columnas como en el boceto: 1-2 | 3-4 | 5-Drive */
+  .grid{grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(2,auto); grid-auto-flow:column}
+}
+.card{display:flex; flex-direction:column; height:100%; min-height:13rem; padding:1.75rem; background:var(--card);
+  border:1px solid var(--border); border-radius:1rem; text-decoration:none;
+  transition:border-color .2s, transform .2s, box-shadow .2s}
+.card:hover{border-color:var(--accent); transform:translateY(-3px); box-shadow:0 12px 32px -16px rgb(236 72 153 / .35)}
+.num{font:500 italic 2.5rem/1 var(--serif); color:var(--accent-text)}
+.card h2{font-size:1.5rem; margin:1rem 0 .5rem}
+.card p{margin:0; color:var(--muted); font-size:.9375rem}
+.go{margin-top:auto; padding-top:1.25rem; display:flex; align-items:center; gap:.4rem; font-weight:600; font-size:.875rem; color:var(--accent-text)}
+.go svg{transition:transform .2s}
+.card:hover .go svg{transform:translateX(4px)}
+.soon .go{color:var(--muted)}
+.drive{background:var(--fg); color:var(--bg); border-color:var(--fg)}
+.drive p{color:inherit; opacity:.75}
+.drive .go{color:var(--accent)}
+.drive > svg{color:var(--accent)}
+
+/* Entradas: se muestra solo la que está en la URL (#entrada-N) */
+.entrada:not(:target){display:none}
+body:has(.entrada:target) #inicio{display:none}
+.entrada{padding:2.5rem 0 5rem}
+.back{display:inline-flex; align-items:center; gap:.4rem; min-height:44px; color:var(--muted); text-decoration:none; font-weight:500; font-size:.9375rem}
+.back:hover{color:var(--accent-text)}
+.entrada header{padding:2rem 0 2.5rem; border-bottom:1px solid var(--border); margin-bottom:2.5rem}
+.prose > *{max-width:44rem}
+.prose > .wide{max-width:none}
+.prose h2{font-size:clamp(1.625rem,3.5vw,2.125rem); margin:3rem 0 1rem}
+.prose h3{font-size:1.25rem; margin:2rem 0 .5rem}
+.prose p,.prose li{margin:0 0 1rem}
+.qa h2::before{content:"+"; color:var(--accent); margin-right:.6rem; font-family:var(--sans); font-weight:400}
+
+/* Texto de ejemplo para reemplazar */
+.ph{color:var(--muted); font-style:italic; background:var(--soft); border-left:3px solid var(--accent); padding:.75rem 1rem; border-radius:0 .5rem .5rem 0}
+
+.objetivo{font:500 italic 1.25rem/1.5 var(--serif); padding:1.5rem; border-radius:.75rem; background:var(--soft); margin:0 0 1rem}
+.especificos{counter-reset:o; list-style:none; padding:0}
+.especificos li{counter-increment:o; position:relative; padding-left:3.5rem}
+.especificos li::before{content:counter(o,decimal-leading-zero); position:absolute; left:1rem; font:500 italic 1.25rem/1.4 var(--serif); color:var(--accent-text)}
+
+.fotos{display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(12rem,1fr)); margin:1.5rem 0}
+
+/* Tarjetas de personas y lugares */
+.cards{list-style:none; padding:0; margin:1.5rem 0 0; display:grid; gap:1.25rem; grid-template-columns:repeat(auto-fill,minmax(15rem,1fr))}
+.cards.mini{grid-template-columns:repeat(auto-fill,minmax(10.5rem,1fr)); gap:1rem}
+.cards > li{margin:0}
+.persona{background:var(--card); border:1px solid var(--border); border-radius:1rem; overflow:hidden}
+.persona img,.avatar{display:block; width:100%; aspect-ratio:1; object-fit:cover}
+.avatar{background:var(--soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23EC4899' stroke-width='1.5'%3E%3Ccircle cx='12' cy='8' r='4'/%3E%3Cpath d='M4 21a8 8 0 0 1 16 0'/%3E%3C/svg%3E") center/35% no-repeat}
+.persona > div{padding:1.25rem}
+.mini .persona > div{padding:1rem}
+.persona h3{margin:0 0 .25rem; font-size:1.125rem}
+.mini .persona h3{font-size:1rem}
+.persona .dato{font-size:.8125rem; color:var(--muted); margin:0 0 .75rem}
+.persona p:last-child{margin:0; font-size:.9375rem}
+.persona .ph{background:none; border:0; padding:0}
+.lugar{border:1px solid var(--border); border-radius:.75rem; background:var(--card); overflow:hidden}
+.lugar iframe{display:block; width:100%; aspect-ratio:1; border:0}
+.lugar div{padding:1rem 1.25rem 1.25rem; border-top:3px solid var(--accent)}
+.lugar strong{display:block; font:700 1.25rem var(--serif)}
+.lugar span{display:block; color:var(--muted); font-size:.875rem; margin-bottom:.5rem}
+.lugar a{font-size:.8125rem; font-weight:600; color:var(--accent-text)}
+.fotos figure{margin:0}
+.fotos img,.foto-ph{width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:.75rem; display:grid; place-items:center;
+  border:2px dashed var(--border); color:var(--muted); font-size:.875rem}
+figcaption{font-size:.8125rem; color:var(--muted); margin-top:.5rem}
+.mapa{width:100%; aspect-ratio:16/9; border:1px solid var(--border); border-radius:.75rem}
+
+.refs{list-style:none; padding:0}
+.refs li{padding-left:3rem; text-indent:-2rem} /* sangría francesa APA */
+
+.pager{display:flex; justify-content:space-between; gap:1rem; margin-top:4rem; padding-top:2rem; border-top:1px solid var(--border)}
+.pager a{display:flex; flex-direction:column; min-height:44px; text-decoration:none; font-weight:600}
+.pager a span{font-size:.8125rem; font-weight:400; color:var(--muted)}
+.pager a:hover{color:var(--accent-text)}
+.pager a:last-child{text-align:right; margin-left:auto}
+
+.sr{position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap}
+
+footer{border-top:1px solid var(--border); padding:2rem 0; color:var(--muted); font-size:.875rem}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="#">Tejiendo Redes<span>.</span></a>
+    <small>Proyecto Social de Formación · 2026</small>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ===================== INICIO ===================== -->
+  <section id="inicio">
+    <p class="eyebrow">Blog del Proyecto Social de Formación</p>
+    <h1>Tejiendo Redes</h1>
+    <p class="lead">Tecnología para conectar vecinos. Sesiones virtuales para aprender a usar la tecnología con personas de nuestros barrios en Bogotá y Cúcuta.</p>
+
+    <ol class="grid">
+      <li><a class="card" href="#entrada-1">
+        <span class="num">01</span><h2>Entrada 1</h2>
+        <p>Quiénes somos, la comunidad con la que trabajamos y nuestra modalidad de práctica.</p>
+        <span class="go">Leer entrada <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+      </a></li>
+      <li><a class="card" href="#entrada-2">
+        <span class="num">02</span><h2>Entrada 2</h2>
+        <p>Problemática, contexto del territorio, objetivos y justificación del proyecto.</p>
+        <span class="go">Leer entrada <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+      </a></li>
+      <li><a class="card soon" href="#entrada-3">
+        <span class="num">03</span><h2>Entrada 3</h2>
+        <p>Próximamente.</p>
+        <span class="go">Ver entrada <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+      </a></li>
+      <li><a class="card soon" href="#entrada-4">
+        <span class="num">04</span><h2>Entrada 4</h2>
+        <p>Próximamente.</p>
+        <span class="go">Ver entrada <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+      </a></li>
+      <li><a class="card soon" href="#entrada-5">
+        <span class="num">05</span><h2>Entrada 5</h2>
+        <p>Próximamente.</p>
+        <span class="go">Ver entrada <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+      </a></li>
+      <li><!-- ✏️ Pon aquí el enlace real de su carpeta de Drive -->
+        <a class="card drive" href="https://drive.google.com/" target="_blank" rel="noopener">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        <h2>Carpeta en Drive</h2>
+        <p>Evidencias, fotografías y documentos del proyecto.</p>
+        <span class="go">Abrir Drive <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg><span class="sr">(se abre en otra pestaña)</span></span>
+      </a></li>
+    </ol>
+  </section>
+
+  <!-- ===================== ENTRADA 1 ===================== -->
+  <article class="entrada" id="entrada-1">
+    <a class="back" href="#">← Volver al inicio</a>
+    <header>
+      <p class="eyebrow">Entrada 01 · Presentación</p>
+      <h1>Quiénes somos</h1>
+    </header>
+    <div class="prose qa">
+      <h2>¿Quiénes son ustedes?</h2>
+      <ul class="cards wide">
+        <li class="persona">
+          <img src="fotos/wilson.jpg" alt="Foto de Wilson Andrés Rueda Pradilla" loading="lazy">
+          <div>
+            <h3>Wilson Andrés Rueda Pradilla</h3>
+            <p class="dato">Administración de Empresas · ID 1144631 · NRC 69821</p>
+            <p>Soy de Bogotá. Me gusta el deporte y la tecnología, y me interesa aprender constantemente para fortalecer mi formación personal y profesional.</p>
+          </div>
+        </li>
+        <li class="persona">
+          <img src="fotos/eilyn.jpg" alt="Foto de Eilyn Rodríguez" loading="lazy">
+          <div>
+            <h3>Eilyn Rodríguez</h3>
+            <p class="dato">Ingeniería Industrial · ID 992028</p>
+            <p>Vivo en Cúcuta, Norte de Santander. Soy una persona comprometida con mi formación personal y profesional, caracterizada por la responsabilidad, la dedicación y el deseo constante de aprender.</p>
+          </div>
+        </li>
+        <!-- ✏️ Para agregar foto: <img src="fotos/nombre.jpg" alt="Foto de ..."> en lugar del div avatar -->
+        <li class="persona">
+          <img src="fotos/pedro.jpg" alt="Foto de Pedro Ruiz" loading="lazy">
+          <div>
+            <h3>Pedro Luis Ruiz Gómez</h3>
+            <p class="dato">Ingeniería de Software · ID 1063406</p>
+            <p>Me considero una persona responsable y amigable. Me gustan los videojuegos, salir con mis amigos y comer.</p>
+          </div>
+        </li>
+        <li class="persona">
+          <img src="fotos/edwar.jpg" alt="Foto de Edwar Ivan Alba Jerez" loading="lazy">
+          <div>
+            <h3>Edwar Ivan Alba Jerez</h3>
+            <p class="dato">Ingeniería de Software · ID 1065135</p>
+            <p>Soy estudiante de Ingeniería de Software. Me apasiona la tecnología y creo que puede acercar a las personas; por eso me motiva compartir lo que sé con mi comunidad y aprender de cada encuentro.</p>
+          </div>
+        </li>
+      </ul>
+
+      <h2>¿Con qué comunidad o grupo social van a trabajar?</h2>
+      <p>Trabajaremos con vecinos de los barrios donde vive cada integrante del grupo: personas que quieren aprender a usar la tecnología en su día a día.</p>
+      <ul class="cards mini wide">
+        <li class="persona"><div class="avatar" aria-hidden="true"></div><div><h3>Peregrino Pradilla Rojas</h3><p class="dato">La Serena · Bogotá</p><p class="ph">Breve presentación.</p></div></li>
+        <li class="persona"><div class="avatar" aria-hidden="true"></div><div><h3>Deybi Rodríguez Gelvez</h3><p class="dato">Cúcuta · Norte de Santander</p><p class="ph">Breve presentación.</p></div></li>
+        <li class="persona"><div class="avatar" aria-hidden="true"></div><div><h3>Henry Power Rodríguez</h3><p class="dato">Cúcuta · Norte de Santander</p><p class="ph">Breve presentación.</p></div></li>
+        <li class="persona"><div class="avatar" aria-hidden="true"></div><div><h3>María Piedad Gelvez</h3><p class="dato">Cúcuta · Norte de Santander</p><p class="ph">Breve presentación.</p></div></li>
+        <li class="persona"><div class="avatar" aria-hidden="true"></div><div><h3>Participante 5</h3><p class="dato">Barrio · Ciudad</p><p class="ph">Breve presentación.</p></div></li>
+        <li class="persona"><div class="avatar" aria-hidden="true"></div><div><h3>Participante 6</h3><p class="dato">Barrio · Ciudad</p><p class="ph">Breve presentación.</p></div></li>
+        <li class="persona"><div class="avatar" aria-hidden="true"></div><div><h3>Participante 7</h3><p class="dato">Barrio · Ciudad</p><p class="ph">Breve presentación.</p></div></li>
+        <li class="persona"><div class="avatar" aria-hidden="true"></div><div><h3>Participante 8</h3><p class="dato">Barrio · Ciudad</p><p class="ph">Breve presentación.</p></div></li>
+        <li class="persona"><div class="avatar" aria-hidden="true"></div><div><h3>Participante 9</h3><p class="dato">Barrio · Ciudad</p><p class="ph">Breve presentación.</p></div></li>
+        <li class="persona"><div class="avatar" aria-hidden="true"></div><div><h3>Participante 10</h3><p class="dato">Barrio · Ciudad</p><p class="ph">Breve presentación.</p></div></li>
+      </ul>
+
+      <h2>¿Dónde se encuentra ubicada esa comunidad o grupo social?</h2>
+      <p>La comunidad está repartida en cuatro lugares: tres barrios de Bogotá y la ciudad de Cúcuta.</p>
+      <ul class="cards wide">
+        <!-- Coordenadas tomadas de OpenStreetMap (Nominatim) -->
+        <li class="lugar">
+          <iframe title="Mapa del barrio Mandalay, Kennedy, Bogotá" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-74.1520%2C4.6224%2C-74.1360%2C4.6344&amp;layer=mapnik&amp;marker=4.6284%2C-74.1440"></iframe>
+          <div><strong>Mandalay</strong><span>Kennedy · Bogotá</span><a href="https://www.openstreetmap.org/?mlat=4.6284&amp;mlon=-74.1440#map=16/4.6284/-74.1440" target="_blank" rel="noopener">Ver mapa grande ↗</a></div>
+        </li>
+        <li class="lugar">
+          <iframe title="Mapa del barrio Ayacucho, Kennedy, Bogotá" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-74.1606%2C4.6244%2C-74.1446%2C4.6364&amp;layer=mapnik&amp;marker=4.6304%2C-74.1526"></iframe>
+          <div><strong>Ayacucho</strong><span>Kennedy · Bogotá</span><a href="https://www.openstreetmap.org/?mlat=4.6304&amp;mlon=-74.1526#map=16/4.6304/-74.1526" target="_blank" rel="noopener">Ver mapa grande ↗</a></div>
+        </li>
+        <li class="lugar">
+          <iframe title="Mapa del barrio La Serena, Engativá, Bogotá" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-74.1014%2C4.7008%2C-74.0854%2C4.7128&amp;layer=mapnik&amp;marker=4.7068%2C-74.0934"></iframe>
+          <div><strong>La Serena</strong><span>Engativá · Bogotá</span><a href="https://www.openstreetmap.org/?mlat=4.7068&amp;mlon=-74.0934#map=16/4.7068/-74.0934" target="_blank" rel="noopener">Ver mapa grande ↗</a></div>
+        </li>
+        <li class="lugar">
+          <iframe title="Mapa de Cúcuta, Norte de Santander" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-72.5580%2C7.8571%2C-72.4580%2C7.9371&amp;layer=mapnik&amp;marker=7.8971%2C-72.5080"></iframe>
+          <div><strong>Cúcuta</strong><span>Norte de Santander</span><a href="https://www.openstreetmap.org/?mlat=7.8971&amp;mlon=-72.5080#map=13/7.8971/-72.5080" target="_blank" rel="noopener">Ver mapa grande ↗</a></div>
+        </li>
+      </ul>
+
+      <h2>¿En qué modalidad van a hacer su práctica?</h2>
+      <p><strong>Virtual</strong>, con sesiones por <strong>Google Meet</strong>. Como los participantes viven en barrios y ciudades distintos, la modalidad virtual nos permite reunirlos en un mismo espacio sin que tengan que desplazarse.</p>
+    </div>
+    <nav class="pager" aria-label="Entradas">
+      <a href="#"><span>Anterior</span>Inicio</a>
+      <a href="#entrada-2"><span>Siguiente</span>Entrada 2</a>
+    </nav>
+  </article>
+
+  <!-- ===================== ENTRADA 2 ===================== -->
+  <article class="entrada" id="entrada-2">
+    <a class="back" href="#">← Volver al inicio</a>
+    <header>
+      <p class="eyebrow">Entrada 02 · El proyecto</p>
+      <h1>Título breve y llamativo del proyecto</h1> <!-- ✏️ Relacionado con el tema y el contexto social del PSF -->
+    </header>
+    <div class="prose">
+      <h2>Planteamiento de la problemática y contexto</h2>
+      <h3>La problemática</h3>
+      <p class="ph">Presenten la problemática que eligieron en el plan de trabajo y hagan una breve descripción.</p>
+      <h3>El territorio</h3>
+      <p class="ph">Contextualicen el territorio o la comunidad donde desarrollarán la práctica en responsabilidad social.</p>
+
+      <div class="fotos">
+        <!-- ✏️ Reemplacen cada <div class="foto-ph"> por: <img src="fotos/foto1.jpg" alt="Descripción de la foto"> -->
+        <figure><div class="foto-ph">Foto 1</div><figcaption>Pie de foto del territorio.</figcaption></figure>
+        <figure><div class="foto-ph">Foto 2</div><figcaption>Pie de foto de la comunidad.</figcaption></figure>
+        <figure><div class="foto-ph">Foto 3</div><figcaption>Pie de foto.</figcaption></figure>
+      </div>
+
+      <h3>Geolocalización</h3>
+      <!-- ✏️ Cambien las coordenadas: en openstreetmap.org → Compartir → HTML, copien el src del iframe -->
+      <iframe class="mapa" title="Mapa de la ubicación de la comunidad" loading="lazy"
+        src="https://www.openstreetmap.org/export/embed.html?bbox=-74.12%2C4.58%2C-74.04%2C4.68&amp;layer=mapnik&amp;marker=4.63%2C-74.08"></iframe>
+
+      <h2>Objetivos</h2>
+      <h3>Objetivo general</h3>
+      <p class="objetivo">Relacionado con el tema y la comunidad o territorio seleccionado.</p>
+      <h3>Objetivos específicos</h3>
+      <ol class="especificos">
+        <li class="ph">Primera etapa del proyecto.</li>
+        <li class="ph">Segunda etapa del proyecto.</li>
+        <li class="ph">Tercera etapa del proyecto.</li>
+      </ol>
+
+      <h2>Justificación</h2>
+      <p class="ph">Con argumentos claros y contundentes: la problemática abordada y la justificación del proyecto desde su carácter <strong>académico</strong>, <strong>científico</strong> y <strong>social</strong>, y los aportes que puede generar en la comunidad.</p>
+
+      <h2>Referencias</h2>
+      <ul class="refs">
+        <li class="ph">Apellido, A. A. (Año). <em>Título del trabajo</em>. Editorial. https://doi.org/xxxx</li>
+      </ul>
+    </div>
+    <nav class="pager" aria-label="Entradas">
+      <a href="#entrada-1"><span>Anterior</span>Entrada 1</a>
+      <a href="#entrada-3"><span>Siguiente</span>Entrada 3</a>
+    </nav>
+  </article>
+
+  <!-- ===================== ENTRADA 3 ===================== -->
+  <article class="entrada" id="entrada-3">
+    <a class="back" href="#">← Volver al inicio</a>
+    <header><p class="eyebrow">Entrada 03</p><h1>Título de la entrada 3</h1></header>
+    <div class="prose"><p class="ph">Contenido de la entrada 3.</p></div>
+    <nav class="pager" aria-label="Entradas">
+      <a href="#entrada-2"><span>Anterior</span>Entrada 2</a>
+      <a href="#entrada-4"><span>Siguiente</span>Entrada 4</a>
+    </nav>
+  </article>
+
+  <!-- ===================== ENTRADA 4 ===================== -->
+  <article class="entrada" id="entrada-4">
+    <a class="back" href="#">← Volver al inicio</a>
+    <header><p class="eyebrow">Entrada 04</p><h1>Título de la entrada 4</h1></header>
+    <div class="prose"><p class="ph">Contenido de la entrada 4.</p></div>
+    <nav class="pager" aria-label="Entradas">
+      <a href="#entrada-3"><span>Anterior</span>Entrada 3</a>
+      <a href="#entrada-5"><span>Siguiente</span>Entrada 5</a>
+    </nav>
+  </article>
+
+  <!-- ===================== ENTRADA 5 ===================== -->
+  <article class="entrada" id="entrada-5">
+    <a class="back" href="#">← Volver al inicio</a>
+    <header><p class="eyebrow">Entrada 05</p><h1>Título de la entrada 5</h1></header>
+    <div class="prose"><p class="ph">Contenido de la entrada 5.</p></div>
+    <nav class="pager" aria-label="Entradas">
+      <a href="#entrada-4"><span>Anterior</span>Entrada 4</a>
+      <a href="#"><span>Volver</span>Inicio</a>
+    </nav>
+  </article>
+
+</main>
+
+<footer>
+  <div class="wrap">Tejiendo Redes · Proyecto Social de Formación</div>
+</footer>
+
+</body>
+</html>
