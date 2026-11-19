@@ -76,13 +76,42 @@ body:has(.entrada:target) #inicio{display:none}
 .ph{color:var(--muted); font-style:italic; background:var(--soft); border-left:3px solid var(--accent); padding:.75rem 1rem; border-radius:0 .5rem .5rem 0}
 
 .objetivo{font:500 italic 1.25rem/1.5 var(--serif); padding:1.5rem; border-radius:.75rem; background:var(--soft); margin:0 0 1rem}
-.especificos{counter-reset:o; list-style:none; padding:0}
-.especificos li{counter-increment:o; position:relative; padding-left:3.5rem}
-.especificos small{display:block; margin-top:.25rem; color:var(--muted); font-size:.8125rem}
 .refs li{overflow-wrap:anywhere}
-.especificos li::before{content:counter(o,decimal-leading-zero); position:absolute; left:1rem; font:500 italic 1.25rem/1.4 var(--serif); color:var(--accent-text)}
 
 .fotos{display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(12rem,1fr)); margin:1.5rem 0}
+
+/* Equipo en la portada */
+.equipo{display:flex; align-items:center; gap:1rem; margin-top:2rem; flex-wrap:wrap}
+.equipo div{display:flex}
+.equipo img{width:3.5rem; height:3.5rem; border-radius:50%; object-fit:cover; border:3px solid var(--bg); margin-left:-.75rem}
+.equipo img:first-child{margin-left:0}
+.equipo p{margin:0; color:var(--muted); font-size:.9375rem}
+
+/* Cifras destacadas */
+.stats{list-style:none; padding:0; margin:2.5rem 0 0; display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(10rem,1fr))}
+.prose .stats{margin:1.5rem 0}
+.stats li{margin:0; padding:1.25rem; border-radius:1rem; background:var(--soft); border:1px solid var(--border)}
+.stats b{display:block; font:700 2.25rem/1.1 var(--serif); color:var(--accent-text)}
+.stats span{font-size:.875rem; color:var(--muted)}
+.stats small{display:block; margin-top:.25rem; font-size:.75rem; color:var(--muted)}
+
+/* Cita / dato grande dentro del texto */
+.destacado{margin:2rem 0; padding:1.5rem 1.75rem; border-radius:1rem; background:var(--fg); color:var(--bg); display:flex; gap:1.5rem; align-items:center; flex-wrap:wrap}
+.destacado b{font:700 clamp(2.5rem,7vw,3.5rem)/1 var(--serif); color:var(--accent)}
+.destacado p{margin:0; flex:1 1 16rem; font-size:1rem}
+
+/* Tarjetas con ícono (modalidad, dimensiones) */
+.bloques{list-style:none; padding:0; margin:1.5rem 0 2rem; display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(14rem,1fr))}
+.bloques li{margin:0; padding:1.5rem; background:var(--card); border:1px solid var(--border); border-top:3px solid var(--accent); border-radius:1rem; font-size:.9375rem}
+.bloques svg{color:var(--accent-text); display:block; margin-bottom:.75rem}
+.bloques h3{margin:0 0 .5rem; font-size:1.25rem}
+.bloques p{margin:0; color:var(--muted)}
+
+/* Sesiones (objetivos específicos) */
+.sesiones{list-style:none; padding:0; margin:1.5rem 0 0; display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))}
+.sesiones li{margin:0; padding:1.5rem; background:var(--card); border:1px solid var(--border); border-radius:1rem; display:flex; flex-direction:column; gap:.75rem; font-size:.9375rem}
+.sesiones .tag{align-self:flex-start; padding:.2rem .7rem; border-radius:99px; background:var(--soft); color:var(--accent-text); font-weight:600; font-size:.75rem; letter-spacing:.06em; text-transform:uppercase}
+.sesiones small{margin-top:auto; color:var(--muted); font-size:.8125rem}
 
 /* Tarjetas de personas y lugares */
 .cards{list-style:none; padding:0; margin:1.5rem 0 0; display:grid; gap:1.25rem; grid-template-columns:repeat(auto-fill,minmax(15rem,1fr))}
@@ -105,8 +134,12 @@ body:has(.entrada:target) #inicio{display:none}
 .lugar span{display:block; color:var(--muted); font-size:.875rem; margin-bottom:.5rem}
 .lugar a{font-size:.8125rem; font-weight:600; color:var(--accent-text)}
 .fotos figure{margin:0}
-.fotos img,.foto-ph{width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:.75rem; display:grid; place-items:center;
-  border:2px dashed var(--border); color:var(--muted); font-size:.875rem}
+.fotos img{display:block; width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:.75rem}
+.foto-ph{width:100%; aspect-ratio:4/3; border-radius:.75rem; display:grid; place-content:center; justify-items:center; gap:.5rem;
+  border:2px dashed var(--border); background:var(--soft); color:var(--muted); font-size:.875rem}
+.foto-ph::before{content:""; width:2.5rem; height:2.5rem; background:var(--accent);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5'%3E%3Cpath d='M3 8a2 2 0 0 1 2-2h2l2-2h6l2 2h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/%3E%3Ccircle cx='12' cy='13' r='3.5'/%3E%3C/svg%3E") center/contain no-repeat;
+          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5'%3E%3Cpath d='M3 8a2 2 0 0 1 2-2h2l2-2h6l2 2h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/%3E%3Ccircle cx='12' cy='13' r='3.5'/%3E%3C/svg%3E") center/contain no-repeat}
 figcaption{font-size:.8125rem; color:var(--muted); margin-top:.5rem}
 
 .refs{list-style:none; padding:0}
@@ -145,6 +178,23 @@ footer{border-top:1px solid var(--border); padding:2rem 0; color:var(--muted); f
     <h1>Tejiendo Redes</h1>
     <p class="lead">Tecnología para conectar vecinos. Sesiones virtuales para aprender a usar la tecnología con personas de nuestros barrios en Bogotá y Cúcuta.</p>
 
+    <div class="equipo">
+      <div>
+        <img src="fotos/wilson.jpg" alt="Wilson">
+        <img src="fotos/eilyn.jpg" alt="Eilyn">
+        <img src="fotos/pedro.jpg" alt="Pedro">
+        <img src="fotos/edwar.jpg" alt="Edwar">
+      </div>
+      <p>Wilson, Eilyn, Pedro y Edwar · Estudiantes UNIMINUTO</p>
+    </div>
+
+    <ul class="stats">
+      <li><b>4</b><span>sesiones virtuales por Google Meet</span></li>
+      <li><b>2</b><span>ciudades: Bogotá y Cúcuta</span></li>
+      <li><b>4</b><span>barrios y comunidades</span></li>
+      <li><b>34,9&nbsp;%</b><span>de la brecha digital del país se debe a falta de habilidades</span><small>MinTIC, 2023</small></li>
+    </ul>
+
     <ol class="grid">
       <li><a class="card" href="#entrada-1">
         <span class="num">01</span><h2>Entrada 1</h2>
@@ -172,11 +222,11 @@ footer{border-top:1px solid var(--border); padding:2rem 0; color:var(--muted); f
         <span class="go">Ver entrada <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
       </a></li>
       <li>
-        <a class="card drive" href="https://drive.google.com/drive/folders/1zkJpDcLQ3hsaQ0pCDPdwEFr3JrW-vBnE?usp=sharing" target="_blank" rel="noopener">
+        <a class="card drive" href="https://uniminuto0-my.sharepoint.com/:f:/r/personal/edwar_alba_uniminuto_edu_co/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fedwar%5Falba%5Funiminuto%5Fedu%5Fco%2FDocuments%2FPRACTICA%20SOCIAL%20UNIMINUTO&amp;share=cgqmaLzWJsK%2DQ4byyaw%2Di4M1EgUDbCAvoneCMxM7ChrqwovASg" target="_blank" rel="noopener">
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-        <h2>Carpeta en Drive</h2>
+        <h2>Carpeta en OneDrive</h2>
         <p>Evidencias, fotografías y documentos del proyecto.</p>
-        <span class="go">Abrir Drive <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg><span class="sr">(se abre en otra pestaña)</span></span>
+        <span class="go">Abrir OneDrive <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg><span class="sr">(se abre en otra pestaña)</span></span>
       </a></li>
     </ol>
   </section>
@@ -257,7 +307,12 @@ footer{border-top:1px solid var(--border); padding:2rem 0; color:var(--muted); f
       </ul>
 
       <h2>¿En qué modalidad van a hacer su práctica?</h2>
-      <p><strong>Virtual</strong>, con sesiones por <strong>Google Meet</strong>. Como los participantes viven en barrios y ciudades distintos, la modalidad virtual nos permite reunirlos en un mismo espacio sin que tengan que desplazarse.</p>
+      <ul class="bloques wide">
+        <li><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-3v10l-6-3z"/></svg>
+          <h3>Virtual</h3><p>Sesiones en vivo por Google Meet.</p></li>
+        <li><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          <h3>Sin desplazarse</h3><p>Los participantes viven en barrios y ciudades distintos; la modalidad virtual los reúne en un mismo espacio.</p></li>
+      </ul>
     </div>
     <nav class="pager" aria-label="Entradas">
       <a href="#"><span>Anterior</span>Inicio</a>
@@ -277,17 +332,27 @@ footer{border-top:1px solid var(--border); padding:2rem 0; color:var(--muted); f
       <h2>Planteamiento de la problemática y contexto</h2>
       <h3>La problemática</h3>
       <p>Pagar, transferir o recibir dinero desde el celular ya es parte de la vida diaria, pero no para todos es sencillo. Registrarse en una billetera digital, crear una contraseña segura, confirmar el destinatario de una transferencia, escanear un código QR o recuperar una cuenta pueden resultar tareas complejas, sobre todo para las personas mayores que tienen poca experiencia con teléfonos inteligentes y aplicaciones financieras.</p>
-      <p>Esto genera dependencia de familiares o terceros para hacer operaciones cotidianas, desconfianza hacia la tecnología y mayor exposición a fraudes. No se trata de errores individuales: es parte de la <strong>brecha digital</strong>. En Colombia, las habilidades digitales son la dimensión que más pesa en esa brecha, con el 34,9&nbsp;% del índice nacional en 2022 (Ministerio de Tecnologías de la Información y las Comunicaciones [MinTIC], 2023). A nivel mundial ocurre algo similar: tener un celular o acceso a internet no basta si no se cuenta con las competencias para usarlos (Iberdrola, s.&nbsp;f.).</p>
+      <p>Esto genera dependencia de familiares o terceros para hacer operaciones cotidianas, desconfianza hacia la tecnología y mayor exposición a fraudes. No se trata de errores individuales: es parte de la <strong>brecha digital</strong>. A nivel mundial ocurre algo similar: tener un celular o acceso a internet no basta si no se cuenta con las competencias para usarlos (Iberdrola, s.&nbsp;f.).</p>
+      <div class="destacado wide">
+        <b>34,9&nbsp;%</b>
+        <p>En Colombia, las habilidades digitales son la dimensión que más pesa en la brecha digital: el 34,9&nbsp;% del índice nacional en 2022 (Ministerio de Tecnologías de la Información y las Comunicaciones [MinTIC], 2023).</p>
+      </div>
 
       <h3>El territorio</h3>
       <p>Trabajamos con nuestras familias y vecinos en dos ciudades. En <strong>Cúcuta (Norte de Santander)</strong> están la mayoría de los participantes y nuestro interlocutor, Deybi Rodríguez Gelvez. En <strong>Bogotá</strong> participan vecinos de los barrios Mandalay y Ayacucho (localidad de Kennedy) y La Serena (localidad de Engativá).</p>
-      <p>Bogotá es el territorio con menor brecha digital del país (0,254 en 2022), lo que muestra que, incluso donde hay más conectividad, persisten las dificultades de uso (MinTIC, 2023). En Norte de Santander, la brecha en la dimensión de motivación es de las más bajas del país (0,048 en 2024) (MinTIC, 2025): las personas sí quieren usar la tecnología; lo que les falta es acompañamiento para aprender a hacerlo con seguridad.</p>
+      <ul class="stats wide">
+        <li><b>0,254</b><span>Bogotá: la menor brecha digital del país, aunque persisten las dificultades de uso</span><small>MinTIC, 2023 · datos 2022</small></li>
+        <li><b>0,048</b><span>Norte de Santander: brecha de motivación de las más bajas; la gente sí quiere aprender</span><small>MinTIC, 2025 · datos 2024</small></li>
+      </ul>
+      <p>Bogotá es el territorio con menor brecha digital del país, lo que muestra que, incluso donde hay más conectividad, persisten las dificultades de uso. En Norte de Santander las personas sí quieren usar la tecnología; lo que les falta es acompañamiento para aprender a hacerlo con seguridad.</p>
 
-      <div class="fotos">
-        <!-- ✏️ Reemplacen cada <div class="foto-ph"> por: <img src="fotos/foto1.jpg" alt="Descripción de la foto"> -->
-        <figure><div class="foto-ph">Foto 1</div><figcaption>Participantes en Cúcuta.</figcaption></figure>
-        <figure><div class="foto-ph">Foto 2</div><figcaption>Participantes en Bogotá.</figcaption></figure>
-        <figure><div class="foto-ph">Foto 3</div><figcaption>Sesión virtual por Google Meet.</figcaption></figure>
+      <h3>Galería de la práctica</h3>
+      <div class="fotos wide">
+        <!-- ✏️ Reemplacen cada <div class="foto-ph">…</div> por: <img src="fotos/archivo.jpg" alt="Descripción de la foto" loading="lazy"> -->
+        <figure><div class="foto-ph">Foto pendiente</div><figcaption>Participantes en Cúcuta.</figcaption></figure>
+        <figure><div class="foto-ph">Foto pendiente</div><figcaption>Participantes en Bogotá.</figcaption></figure>
+        <figure><div class="foto-ph">Foto pendiente</div><figcaption>Sesión virtual por Google Meet.</figcaption></figure>
+        <figure><div class="foto-ph">Foto pendiente</div><figcaption>Participante usando la billetera digital en su celular.</figcaption></figure>
       </div>
 
       <h3>Geolocalización</h3>
@@ -314,18 +379,23 @@ footer{border-top:1px solid var(--border); padding:2rem 0; color:var(--muted); f
       <h3>Objetivo general</h3>
       <p class="objetivo">Fortalecer las habilidades y conocimientos digitales de la población para facilitar la comprensión y el uso autónomo, seguro y adecuado de las billeteras digitales, promoviendo la inclusión financiera y reduciendo las dificultades relacionadas con el manejo de aplicaciones, transferencias, contraseñas, códigos QR y otras herramientas tecnológicas.</p>
       <h3>Objetivos específicos</h3>
-      <ol class="especificos">
-        <li>Explicar qué es una billetera digital y para qué sirve, mediante una sesión teórica con videos y diapositivas.<small>Sesión 1 · Edwar y Pedro</small></li>
-        <li>Acompañar a los participantes en la descarga, el registro y la configuración de una billetera digital en su celular.<small>Sesión 2 · Wilson y Eilyn</small></li>
-        <li>Practicar el uso de la billetera para enviar y recibir dinero, hacer pagos y usar códigos QR.<small>Sesión 3 · Wilson y Eilyn</small></li>
-        <li>Enseñar medidas de seguridad para proteger la cuenta y prevenir fraudes.<small>Sesión 4 · Edwar y Pedro</small></li>
+      <ol class="sesiones wide">
+        <li><span class="tag">Sesión 1</span>Explicar qué es una billetera digital y para qué sirve, mediante una sesión teórica con videos y diapositivas.<small>A cargo de Edwar y Pedro</small></li>
+        <li><span class="tag">Sesión 2</span>Acompañar a los participantes en la descarga, el registro y la configuración de una billetera digital en su celular.<small>A cargo de Wilson y Eilyn</small></li>
+        <li><span class="tag">Sesión 3</span>Practicar el uso de la billetera para enviar y recibir dinero, hacer pagos y usar códigos QR.<small>A cargo de Wilson y Eilyn</small></li>
+        <li><span class="tag">Sesión 4</span>Enseñar medidas de seguridad para proteger la cuenta y prevenir fraudes.<small>A cargo de Edwar y Pedro</small></li>
       </ol>
 
       <h2>Justificación</h2>
       <p>Las billeteras digitales se volvieron una forma común de pagar y recibir dinero, pero no todas las personas tienen las habilidades para usarlas con autonomía y seguridad. Este proyecto se justifica desde tres dimensiones:</p>
-      <p><strong>Académica.</strong> Nos permite aplicar en un contexto real lo que aprendemos en nuestros programas (Ingeniería de Software, Ingeniería Industrial y Administración de Empresas) y fortalecer nuestra formación en responsabilidad social, dentro de la línea <em>Ciudadanías, comunicación, ciencias y tecnologías</em>.</p>
-      <p><strong>Científica.</strong> La propuesta parte de datos verificables. Según el Índice de Brecha Digital, las habilidades digitales explicaron el 34,9&nbsp;% de la brecha del país en 2022 (MinTIC, 2023), y en 2024 las habilidades digitales y el acceso material, en conjunto, explicaron el 65,7&nbsp;% del índice (MinTIC, 2025). A nivel global, la llamada <em>brecha de uso</em> muestra que el acceso a internet no garantiza saber aprovecharlo (Iberdrola, s.&nbsp;f.).</p>
-      <p><strong>Social.</strong> Aprender a usar billeteras digitales de forma segura reduce la dependencia de terceros, aumenta la autonomía y la confianza de las personas, las protege frente a fraudes y promueve su inclusión financiera. Al terminar las sesiones esperamos que cada participante pueda registrarse, enviar y recibir dinero, pagar con QR y proteger su cuenta sin ayuda.</p>
+      <ul class="bloques wide">
+        <li><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg>
+          <h3>Académica</h3><p>Nos permite aplicar en un contexto real lo que aprendemos en nuestros programas (Ingeniería de Software, Ingeniería Industrial y Administración de Empresas) y fortalecer nuestra formación en responsabilidad social, dentro de la línea <em>Ciudadanías, comunicación, ciencias y tecnologías</em>.</p></li>
+        <li><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
+          <h3>Científica</h3><p>La propuesta parte de datos verificables. Según el Índice de Brecha Digital, las habilidades digitales explicaron el 34,9&nbsp;% de la brecha del país en 2022 (MinTIC, 2023), y en 2024 las habilidades digitales y el acceso material, en conjunto, explicaron el 65,7&nbsp;% del índice (MinTIC, 2025). A nivel global, la llamada <em>brecha de uso</em> muestra que el acceso a internet no garantiza saber aprovecharlo (Iberdrola, s.&nbsp;f.).</p></li>
+        <li><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2 20a7 7 0 0 1 14 0"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14a5 5 0 0 1 5 5"/></svg>
+          <h3>Social</h3><p>Aprender a usar billeteras digitales de forma segura reduce la dependencia de terceros, aumenta la autonomía y la confianza de las personas, las protege frente a fraudes y promueve su inclusión financiera. Al terminar las sesiones esperamos que cada participante pueda registrarse, enviar y recibir dinero, pagar con QR y proteger su cuenta sin ayuda.</p></li>
+      </ul>
 
       <h2>Referencias</h2>
       <ul class="refs">
