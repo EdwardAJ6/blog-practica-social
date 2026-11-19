@@ -78,7 +78,6 @@ body:has(.entrada:target) #inicio{display:none}
 .objetivo{font:500 italic 1.25rem/1.5 var(--serif); padding:1.5rem; border-radius:.75rem; background:var(--soft); margin:0 0 1rem}
 .refs li{overflow-wrap:anywhere}
 
-.fotos{display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(12rem,1fr)); margin:1.5rem 0}
 
 /* Equipo en la portada */
 .equipo{display:flex; align-items:center; gap:1rem; margin-top:2rem; flex-wrap:wrap}
@@ -113,6 +112,22 @@ body:has(.entrada:target) #inicio{display:none}
 .sesiones .tag{align-self:flex-start; padding:.2rem .7rem; border-radius:99px; background:var(--soft); color:var(--accent-text); font-weight:600; font-size:.75rem; letter-spacing:.06em; text-transform:uppercase}
 .sesiones small{margin-top:auto; color:var(--muted); font-size:.8125rem}
 
+/* Crónica de sesión (Entrada 3) */
+.entrada .sesion-head{display:grid; gap:2rem; align-items:center; padding:clamp(1.5rem,4vw,2.5rem); border-radius:1.25rem; background:var(--soft); border:1px solid var(--border)}
+@media (min-width:56rem){.entrada .sesion-head{grid-template-columns:1.3fr 1fr}}
+.sesion-head h1{font-size:clamp(2rem,5vw,3.25rem)}
+.boton{display:inline-flex; align-items:center; gap:.5rem; min-height:44px; margin-top:1.5rem; padding:.75rem 1.25rem; border-radius:99px; background:var(--fg); color:var(--bg); font-weight:600; font-size:.9375rem; text-decoration:none; transition:background .2s}
+.boton:hover{background:var(--accent-text)}
+.chips{list-style:none; padding:0; margin:0; display:grid; gap:.75rem; grid-template-columns:repeat(auto-fit,minmax(11rem,1fr))}
+.chips li{display:flex; align-items:center; gap:.6rem; padding:.75rem 1.1rem; border-radius:99px; background:var(--card); border:1px solid var(--border); font-weight:600; font-size:.875rem; line-height:1.3}
+.chips svg{flex:none; color:var(--accent-text)}
+.momentos{display:grid; gap:2.5rem 1.5rem; margin:1.5rem 0}
+@media (min-width:48rem){.momentos{grid-template-columns:1fr 1fr}}
+.momentos h3{margin:0 0 .25rem}
+.momentos p{margin:0 0 1rem; color:var(--muted); font-size:.9375rem}
+.momentos img,.captura img{display:block; width:100%; height:auto; border-radius:.75rem; border:1px solid var(--border)}
+.captura{margin:1.5rem 0 2rem}
+
 /* Tarjetas de personas y lugares */
 .cards{list-style:none; padding:0; margin:1.5rem 0 0; display:grid; gap:1.25rem; grid-template-columns:repeat(auto-fill,minmax(15rem,1fr))}
 .cards.mini{grid-template-columns:repeat(auto-fill,minmax(10.5rem,1fr)); gap:1rem}
@@ -133,13 +148,6 @@ body:has(.entrada:target) #inicio{display:none}
 .lugar strong{display:block; font:700 1.25rem var(--serif)}
 .lugar span{display:block; color:var(--muted); font-size:.875rem; margin-bottom:.5rem}
 .lugar a{font-size:.8125rem; font-weight:600; color:var(--accent-text)}
-.fotos figure{margin:0}
-.fotos img{display:block; width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:.75rem}
-.foto-ph{width:100%; aspect-ratio:4/3; border-radius:.75rem; display:grid; place-content:center; justify-items:center; gap:.5rem;
-  border:2px dashed var(--border); background:var(--soft); color:var(--muted); font-size:.875rem}
-.foto-ph::before{content:""; width:2.5rem; height:2.5rem; background:var(--accent);
-  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5'%3E%3Cpath d='M3 8a2 2 0 0 1 2-2h2l2-2h6l2 2h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/%3E%3Ccircle cx='12' cy='13' r='3.5'/%3E%3C/svg%3E") center/contain no-repeat;
-          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5'%3E%3Cpath d='M3 8a2 2 0 0 1 2-2h2l2-2h6l2 2h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/%3E%3Ccircle cx='12' cy='13' r='3.5'/%3E%3C/svg%3E") center/contain no-repeat}
 figcaption{font-size:.8125rem; color:var(--muted); margin-top:.5rem}
 
 .refs{list-style:none; padding:0}
@@ -205,10 +213,10 @@ footer{border-top:1px solid var(--border); padding:2rem 0; color:var(--muted); f
         <p>Problemática, contexto del territorio, objetivos y justificación del proyecto.</p>
         <span class="go">Leer entrada <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
       </a></li>
-      <li><a class="card soon" href="#entrada-3">
+      <li><a class="card" href="#entrada-3">
         <span class="num">03</span><h2>Entrada 3</h2>
-        <p>Próximamente.</p>
-        <span class="go">Ver entrada <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        <p>Así fue nuestra sesión 1: qué es una billetera digital y para qué sirve.</p>
+        <span class="go">Leer entrada <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
       </a></li>
       <li><a class="card soon" href="#entrada-4">
         <span class="num">04</span><h2>Entrada 4</h2>
@@ -345,15 +353,6 @@ footer{border-top:1px solid var(--border); padding:2rem 0; color:var(--muted); f
       </ul>
       <p>Bogotá es el territorio con menor brecha digital del país, lo que muestra que, incluso donde hay más conectividad, persisten las dificultades de uso. En Norte de Santander las personas sí quieren usar la tecnología; lo que les falta es acompañamiento para aprender a hacerlo con seguridad.</p>
 
-      <h3>Galería de la práctica</h3>
-      <div class="fotos wide">
-        <!-- ✏️ Reemplacen cada <div class="foto-ph">…</div> por: <img src="fotos/archivo.jpg" alt="Descripción de la foto" loading="lazy"> -->
-        <figure><div class="foto-ph">Foto pendiente</div><figcaption>Participantes en Cúcuta.</figcaption></figure>
-        <figure><div class="foto-ph">Foto pendiente</div><figcaption>Participantes en Bogotá.</figcaption></figure>
-        <figure><div class="foto-ph">Foto pendiente</div><figcaption>Sesión virtual por Google Meet.</figcaption></figure>
-        <figure><div class="foto-ph">Foto pendiente</div><figcaption>Participante usando la billetera digital en su celular.</figcaption></figure>
-      </div>
-
       <h3>Geolocalización</h3>
       <ul class="cards wide">
         <li class="lugar">
@@ -412,8 +411,80 @@ footer{border-top:1px solid var(--border); padding:2rem 0; color:var(--muted); f
   <!-- ===================== ENTRADA 3 ===================== -->
   <article class="entrada" id="entrada-3">
     <a class="back" href="#">← Volver al inicio</a>
-    <header><p class="eyebrow">Entrada 03</p><h1>Título de la entrada 3</h1></header>
-    <div class="prose"><p class="ph">Contenido de la entrada 3.</p></div>
+    <header class="sesion-head">
+      <div>
+        <p class="eyebrow">Entrada 03 · Así fue nuestra sesión 1</p>
+        <h1>¿Qué es una billetera digital y para qué sirve?</h1>
+        <p class="lead">Un primer acercamiento para entender cómo pagar, enviar y recibir dinero desde el celular.</p>
+        <a class="boton" href="https://uniminuto0-my.sharepoint.com/:f:/r/personal/edwar_alba_uniminuto_edu_co/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fedwar%5Falba%5Funiminuto%5Fedu%5Fco%2FDocuments%2FPRACTICA%20SOCIAL%20UNIMINUTO%2FEvidencias%20de%20actividades%2F1%20Clase&amp;share=cgqxJAX2XCYpQKSQ8AlV%2DMyPEgUDSodJDgFb3r4FlIAK4TIIkg" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+          Ver evidencias de la sesión <span class="sr">(se abre en otra pestaña)</span>
+        </a>
+      </div>
+      <ul class="chips">
+        <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>7 de noviembre de 2026</li>
+        <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>4:00 a 5:30 p. m.</li>
+        <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M2 20h20"/></svg>Virtual · Microsoft Teams</li>
+        <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2 20a7 7 0 0 1 14 0"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14a5 5 0 0 1 5 5"/></svg>4 asistentes</li>
+      </ul>
+    </header>
+    <div class="prose">
+      <h2>¿Qué trabajamos?</h2>
+      <p>En esta primera sesión tuvimos 4 asistentes. Buscamos que entendieran qué es una billetera digital, cómo funciona y para qué sirve en su día a día. Explicamos que es una aplicación que guarda de forma segura el dinero o los medios de pago, y que permite pagar, enviar y recibir dinero sin usar efectivo ni tarjetas físicas.</p>
+      <p>Comparamos la billetera física con la digital, recorrimos los cuatro pasos para usarla (registrarse, cargar dinero, pagar o enviar y confirmar) y conocimos los tipos que existen: con saldo propio, como Nequi y Daviplata, y las que digitalizan tarjetas, como Google Wallet. También hablamos de sus beneficios, sus límites, cómo usarla con seguridad y qué es Bre-B, el sistema de pagos inmediatos del Banco de la República.</p>
+      <figure class="captura">
+        <img src="fotos/sesion-1/beneficios.jpg" alt="Pedro Luis Ruiz explica durante la sesión los beneficios de usar una billetera digital" width="1600" height="850" loading="lazy">      </figure>
+      <p class="objetivo">“Menos efectivo, más control sobre tu dinero: una billetera digital convierte tu celular en un banco de bolsillo, disponible a toda hora.”</p>
+
+      <h2>Así vivimos la sesión</h2>
+      <div class="momentos wide">
+        <div>
+          <h3>Presentación</h3>
+          <p>Iniciamos con la bienvenida a los participantes, el propósito del encuentro y la agenda de 90 minutos. Para romper el hielo preguntamos: ¿cómo pagaste lo último que compraste?</p>
+          <img src="fotos/sesion-1/presentacion.jpg" alt="Captura de la sesión: agenda de la sesión en pantalla, con integrantes y participantes conectados" width="1600" height="846" loading="lazy">
+        </div>
+        <div>
+          <h3>Explicación</h3>
+          <p>Explicamos qué es una billetera digital: una aplicación que guarda, paga y mueve dinero. Luego vimos cómo funciona en cuatro pasos y por qué la tokenización protege los datos de la tarjeta.</p>
+          <img src="fotos/sesion-1/explicacion.jpg" alt="Captura de la sesión: diapositiva con la definición de billetera digital" width="1600" height="847" loading="lazy">
+        </div>
+        <div>
+          <h3>Actividad práctica</h3>
+          <p>Pusimos a prueba lo aprendido con un reto de 10 preguntas de 20 segundos cada una. También analizamos casos de la actividad “¿Fraude o no? Tú decides”, como un mensaje de premio o una llamada falsa del “banco”.</p>
+          <img src="fotos/sesion-1/actividad.jpg" alt="Captura de la sesión: pregunta 10 del reto" width="1600" height="871" loading="lazy">
+        </div>
+        <div>
+          <h3>Cierre</h3>
+          <p>Terminamos con tres ideas clave: es tu dinero dentro del celular; sirve para pagar, enviar, recibir y controlar tus gastos; y es segura si cuidas tus claves y usas apps oficiales. Cerramos con un espacio de preguntas.</p>
+          <img src="fotos/sesion-1/cierre.jpg" alt="Captura de la sesión: Pedro presenta el cierre con tres ideas para llevarte" width="1600" height="849" loading="lazy">
+        </div>
+      </div>
+
+      <h2>Reflexión de la sesión</h2>
+      <p>Esta primera sesión nos dejó claro que enseñar a usar una billetera digital no es solo explicar una aplicación: es abrir una puerta a derechos y oportunidades que hoy pasan por el celular.</p>
+
+      <h3>Desde la justicia social</h3>
+      <p>La justicia social busca que todas las personas tengan las mismas oportunidades de acceder a los bienes, servicios y derechos de su sociedad. Hoy, pagar un servicio, recibir un subsidio o enviarle dinero a un familiar depende cada vez más de saber usar el celular. Quien no sabe hacerlo no se queda simplemente “atrasado”: queda excluido, depende de otros y está más expuesto a fraudes.</p>
+      <p class="objetivo">La brecha digital también es una forma de desigualdad.</p>
+      <p>Compartir lo que sabemos con nuestras familias y vecinos es una forma concreta de distribuir oportunidades: llevar a quienes han tenido menos acceso un conocimiento que, como estudiantes, solemos dar por sentado. También es un acto de reconocimiento: valorar las preguntas y la experiencia de cada participante, y entender que la dificultad no está en las personas, sino en una tecnología que no siempre se diseña pensando en todos.</p>
+
+      <h3>Desde el desarrollo integral sostenible</h3>
+      <p>El desarrollo integral sostenible busca que una comunidad mejore su calidad de vida en lo personal, lo económico, lo social y lo ambiental, y que esos avances se mantengan cuando el proyecto termine. En esta sesión eso se tradujo en algo concreto: que los 4 asistentes entendieran qué es una billetera digital, para qué les sirve en su vida diaria y cómo usarla sin caer en fraudes. Así aportó en cada dimensión:</p>
+      <ul class="bloques wide">
+        <li><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></svg>
+          <h3>Humana</h3><p>Conocieron qué es una billetera digital y cómo funciona en cuatro pasos. Entenderlo es el primer paso para usarla sin miedo y sin depender de otros.</p></li>
+        <li><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M16 15h2"/></svg>
+          <h3>Económica</h3><p>Vieron cómo pagar, enviar y recibir dinero, y aprendieron a reconocer fraudes como el mensaje de un premio falso o la llamada de un supuesto banco.</p></li>
+        <li><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2 20a7 7 0 0 1 14 0"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14a5 5 0 0 1 5 5"/></svg>
+          <h3>Social</h3><p>Aprendieron junto a nosotros, sus familiares y vecinos, y ahora pueden compartir lo visto con otras personas de su barrio en Bogotá o Cúcuta.</p></li>
+        <li><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M5 21c1-9 6-15 15-16-1 9-7 14-15 16z"/><path d="m5 21 9-9"/></svg>
+          <h3>Ambiental</h3><p>Pagar facturas o enviar dinero desde el celular evita desplazamientos, filas y recibos impresos.</p></li>
+      </ul>
+      <p>Lo más importante es que el aprendizaje sea sostenible: que cada participante pueda seguir usando su billetera por su cuenta y enseñarle a alguien más, sin depender de nosotros. Este trabajo se conecta con los Objetivos de Desarrollo Sostenible 4 (educación de calidad), 8 (trabajo decente y crecimiento económico, que incluye el acceso a servicios financieros) y 10 (reducción de las desigualdades).</p>
+
+      <h3>Lo que nos llevamos</h3>
+      <p>Como grupo aprendimos que explicar algo que parece sencillo exige preparación, paciencia y empatía. En la próxima sesión pasaremos de la teoría a la práctica: cada participante descargará y configurará una billetera digital en su propio celular.</p>
+    </div>
     <nav class="pager" aria-label="Entradas">
       <a href="#entrada-2"><span>Anterior</span>Entrada 2</a>
       <a href="#entrada-4"><span>Siguiente</span>Entrada 4</a>
